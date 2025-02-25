@@ -57,6 +57,12 @@
       "courses": []
     }
   ],
+  "service": [
+    {
+      "role": "Conference Reviewer",
+      "org": ["NAACL"]
+    }
+  ],
   "awards": [
     {
       "title": "Academic Excellence Award",

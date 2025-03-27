@@ -60,7 +60,7 @@
   "service": [
     {
       "role": "Conference Reviewer",
-      "org": ["NAACL"]
+      "org": ["NAACL 2025", "ACL ARR 2025"]
     }
   ],
   "awards": [

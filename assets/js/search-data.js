@@ -51,6 +51,12 @@ ninja.data = [{
     },{id: "news-i-started-my-phd-journey-in-the-cs-school-of-uiuc-sparkles-smile",
           title: 'I started my PhD journey in the CS School of UIUC. :sparkles: :smile:...',
           description: "",
+          section: "News",},{id: "news-we-release-fans-formal-answer-selection-for-natural-language-reasoning-uinsg-lean4-enhancing-test-time-math-answer-selection-using-formal-language",
+          title: 'We release FANS - Formal Answer Selection for Natural Language Reasoning Uinsg Lean4,...',
+          description: "",
+          section: "News",},{id: "news-we-wrote-a-report-analyzing-what-makes-grpo-stand-out-for-math-reasoning-with-some-understanding-and-ablation-studies-to-compare-different-algorithms-for-llms-reasoning-training",
+          title: 'We wrote a report analyzing what makes GRPO “stand out” for math reasoning,...',
+          description: "",
           section: "News",},{
         id: 'social-email',
         title: 'email',

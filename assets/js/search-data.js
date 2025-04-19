@@ -58,13 +58,6 @@ ninja.data = [{
           title: 'We wrote a report analyzing what makes GRPO “stand out” for math reasoning,...',
           description: "",
           section: "News",},{
-        id: 'social-email',
-        title: 'email',
-        section: 'Socials',
-        handler: () => {
-          window.open("mailto:%6A%69%61%72%75%69%31%34@%69%6C%6C%69%6E%6F%69%73.%65%64%75", "_blank");
-        },
-      },{
         id: 'social-github',
         title: 'GitHub',
         section: 'Socials',

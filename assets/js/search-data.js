@@ -76,7 +76,7 @@ ninja.data = [{
         title: 'LinkedIn',
         section: 'Socials',
         handler: () => {
-          window.open("https://www.linkedin.com/in/1165200487", "_blank");
+          window.open("https://www.linkedin.com/in/jiarui-yao-a07281286", "_blank");
         },
       },{
         id: 'social-scholar',
@@ -84,6 +84,13 @@ ninja.data = [{
         section: 'Socials',
         handler: () => {
           window.open("https://scholar.google.com/citations?user=84fexSEAAAAJ", "_blank");
+        },
+      },{
+        id: 'social-x',
+        title: 'X',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://twitter.com/ExplainMiracles", "_blank");
         },
       },{
       id: 'light-theme',

@@ -8,7 +8,8 @@ profile:
   align: right
   image: pic_jiarui2.jpg
   image_circular: false # crops the image to make it circular
-  # more_info: > 
+  more_info: > 
+    <p style="font-size: 11px;">Email: jiarui14 [AT] illinois [DOT] edu<p>
   #   <p>Thomas M. Siebel Center for Computer Science, UIUC</p>
   #   <p>Urbana, IL, 61801 US</p>
 

@@ -57,6 +57,9 @@ ninja.data = [{
           section: "News",},{id: "news-we-wrote-a-report-analyzing-what-makes-grpo-stand-out-for-math-reasoning-with-some-understanding-and-ablation-studies-to-compare-different-algorithms-for-llms-reasoning-training",
           title: 'We wrote a report analyzing what makes GRPO “stand out” for math reasoning,...',
           description: "",
+          section: "News",},{id: "news-we-released-gvm-gradient-variance-minimization-a-framework-to-improve-the-data-sampling-efficiency-in-llms-math-reasoning-starting-from-rejection-sampling-we-generalize-our-pipeline-to-rl-algorithms-like-grpo-and-present-corresponding-theoretical-analysis-for-our-algorithm",
+          title: 'We released GVM - Gradient Variance Minimization, a framework to improve the data...',
+          description: "",
           section: "News",},{
         id: 'social-github',
         title: 'GitHub',

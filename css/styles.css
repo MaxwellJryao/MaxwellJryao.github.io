@@ -122,6 +122,52 @@ html {
     stroke: var(--text-color-tertiary);
 }
 
+#theme-switcher-container {
+    position: fixed;
+    left: 32px;
+    bottom: 32px;
+    z-index: 101;
+}
+
+.theme-toggle-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--card-background-color);
+    color: var(--text-color-tertiary);
+    border: 1px solid var(--border-color-light);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.1rem;
+}
+
+.theme-toggle-btn:hover {
+    color: var(--link-color);
+    border-color: var(--link-color);
+}
+
+.auto-label {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--text-color-tertiary);
+    background-color: var(--card-background-color);
+    padding: 0 2px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.theme-toggle-btn.auto-mode .auto-label {
+    opacity: 1;
+}
+
 .toc-title {
     font-size: 0.875rem;
     font-weight: 600;

@@ -211,13 +211,14 @@ html {
 }
 
 .title:last-of-type {
-    margin-bottom: 24px;
+    margin-bottom: 0;
 }
 
 .links {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    margin-top: 24px;
 }
 
 .links a {
@@ -231,6 +232,10 @@ html {
 
 .links a:hover {
     color: #1d4ed8;
+}
+
+.links a i {
+    margin-right: 8px;
 }
 
 /* Sections */

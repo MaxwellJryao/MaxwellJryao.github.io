@@ -34,13 +34,13 @@ class BibTeXParser {
         const fields = {
             title: /title\s*=\s*\{([^}]+)\}/i,
             author: /author\s*=\s*\{([^}]+)\}/i,
-            journal: /journal\s*=\s*\{([^}]+)\}/i,
             year: /year\s*=\s*\{([^}]+)\}/i,
             arxiv: /arxiv\s*=\s*\{([^}]+)\}/i,
-            paper: /paper\s*=\s*\{([^}]+)\}/i,
             webpage: /webpage\s*=\s*\{([^}]+)\}/i,
             code: /code\s*=\s*\{([^}]+)\}/i,
-            selected: /selected\s*=\s*\{([^}]+)\}/i
+            venues: /venues\s*=\s*\{([^}]+)\}/i,
+            selected: /selected\s*=\s*\{([^}]+)\}/i,
+            media: /media\s*=\s*\{([^}]+)\}/i
         };
 
         const parsed = {};
@@ -57,16 +57,29 @@ class BibTeXParser {
             return null;
         }
 
+        // Parse venues field: format is "venue1 [award1] | venue2 [award2] | ..."
+        let venues = [];
+        if (parsed.venues) {
+            venues = parsed.venues.split('|').map(v => {
+                const trimmed = v.trim();
+                const awardMatch = trimmed.match(/^(.+?)\s*\[(.+?)\]$/);
+                if (awardMatch) {
+                    return { name: awardMatch[1].trim(), award: awardMatch[2].trim() };
+                }
+                return { name: trimmed, award: null };
+            });
+        }
+
         return {
             title: parsed.title,
             authors: parsed.author,
-            venue: parsed.journal || '',
             year: parsed.year,
+            venues: venues,
             arxiv: parsed.arxiv,
-            paper: parsed.paper,
             webpage: parsed.webpage,
             code: parsed.code,
-            selected: parsed.selected?.toLowerCase() === 'true'
+            selected: parsed.selected?.toLowerCase() === 'true',
+            media: parsed.media
         };
     }
 }
@@ -79,7 +92,7 @@ class AuthorFormatter {
      * @param {number} maxAuthors - Maximum authors before "et al."
      * @returns {string} Formatted HTML string
      */
-    static format(authorString, highlightName = 'Jiarui Yao', maxAuthors = 10) {
+    static format(authorString, highlightName = 'Jiarui Yao', maxAuthors = 12) {
         // Split by 'and'
         const authors = authorString.split(/\s+and\s+/).map(a => a.trim());
 
@@ -116,15 +129,26 @@ class PublicationHTMLGenerator {
      */
     static generateHTML(pub) {
         const authorsHTML = AuthorFormatter.format(pub.authors);
-        const venueStr = pub.venue ? `${pub.venue}, ${pub.year}` : pub.year;
+
+        // Build venues HTML
+        let venuesHTML = '';
+        if (pub.venues && pub.venues.length > 0) {
+            venuesHTML = pub.venues.map(venue => {
+                const awardBadge = venue.award ?
+                    `<span class="venue-award">${venue.award}</span>` : '';
+                return `<div class="pub-venue-item">
+                    <span class="venue-name">${venue.name}, ${pub.year}</span>
+                    ${awardBadge}
+                </div>`;
+            }).join('');
+        } else {
+            venuesHTML = `<div class="pub-venue-item"><span class="venue-name">${pub.year}</span></div>`;
+        }
 
         // Build links
         const links = [];
         if (pub.arxiv) {
             links.push(`<a href="${pub.arxiv}" target="_blank">arXiv</a>`);
-        }
-        if (pub.paper) {
-            links.push(`<a href="${pub.paper}" target="_blank">Paper</a>`);
         }
         if (pub.webpage) {
             links.push(`<a href="${pub.webpage}" target="_blank">Webpage</a>`);
@@ -136,12 +160,30 @@ class PublicationHTMLGenerator {
         const linksHTML = links.length > 0 ?
             `<div class="pub-links">${links.join(' / ')}</div>` : '';
 
+        // Build media HTML
+        let mediaHTML = '';
+        if (pub.media) {
+            const extension = pub.media.split('.').pop().toLowerCase();
+            if (['gif', 'png', 'jpg', 'jpeg', 'webp'].includes(extension)) {
+                mediaHTML = `<div class="pub-media"><img src="${pub.media}" alt="${pub.title} media"></div>`;
+            } else if (['mp4', 'webm'].includes(extension)) {
+                mediaHTML = `<div class="pub-media"><video autoplay loop muted playsinline src="${pub.media}"></video></div>`;
+            }
+        }
+
+        const hasMediaClass = pub.media ? 'has-media' : '';
+
         return `
-            <div class="publication">
-                <div class="pub-title">${pub.title}</div>
-                <div class="pub-authors">${authorsHTML}</div>
-                <div class="pub-venue">${venueStr}</div>
-                ${linksHTML}
+            <div class="publication ${hasMediaClass}">
+                ${mediaHTML}
+                <div class="pub-details">
+                    <div class="pub-title">${pub.title}</div>
+                    <div class="pub-authors">${authorsHTML}</div>
+                    <div class="pub-venues">
+                        ${venuesHTML}
+                    </div>
+                    ${linksHTML}
+                </div>
             </div>
         `;
     }
@@ -166,9 +208,9 @@ class PublicationHTMLGenerator {
 async function loadPublications() {
     try {
         // Fetch the BibTeX file
-        const response = await fetch('publications.bib');
+        const response = await fetch('data/publications.bib');
         if (!response.ok) {
-            throw new Error(`Failed to load publications.bib: ${response.status}`);
+            throw new Error(`Failed to load data/publications.bib: ${response.status}`);
         }
 
         const bibContent = await response.text();

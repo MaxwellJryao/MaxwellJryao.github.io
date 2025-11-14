@@ -4,47 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jiarui Yao</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script src="publications.js"></script>
+    <script src="js/publications.js"></script>
+    <script src="js/news.js" defer></script>
+    <script src="js/toc.js" defer></script>
 </head>
 <body>
+    <!-- TOC Toggle Button -->
+    <button class="toc-toggle-btn" id="tocToggleBtn" title="Toggle navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
+    <!-- Table of Contents -->
+    <nav class="toc" id="tocNav">
+        <div class="toc-content">
+            <h3 class="toc-title">Contents</h3>
+            <ul class="toc-list">
+                <li><a href="#about" class="toc-link">About</a></li>
+                <li><a href="#news" class="toc-link">News</a></li>
+                <li><a href="#research" class="toc-link">Research</a></li>
+                <li><a href="#publications" class="toc-link">Publications</a></li>
+                <li><a href="#education" class="toc-link">Education</a></li>
+                <li><a href="#services" class="toc-link">Services</a></li>
+                <li><a href="#misc" class="toc-link">Misc</a></li>
+            </ul>
+            <button class="back-to-top" id="backToTop" title="Back to top">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <h1 class="name">Jiarui Yao</h1>
-            <p class="title">First-year CS PhD Student</p>
-            <p class="title">University of Illinois, Urbana-Champaign</p>
-            <div class="links">
-                <a href="mailto:jiarui14@illinois.edu">Email</a>
-                <a href="https://github.com/MaxwellJryao" target="_blank">GitHub</a>
-                <a href="https://scholar.google.com/citations?user=84fexSEAAAAJ" target="_blank">Google Scholar</a>
-                <a href="https://www.linkedin.com/in/jiarui-yao-a07281286/" target="_blank">LinkedIn</a>
-                <a href="https://twitter.com/ExplainMiracles" target="_blank">Twitter</a>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1 class="name">Jiarui Yao</h1>
+                    <p class="title">Second-year CS PhD Student</p>
+                    <p class="title">University of Illinois, Urbana-Champaign</p>
+                    <div class="links">
+                        <a href="mailto:jiarui14@illinois.edu">Email</a>
+                        <a href="https://github.com/MaxwellJryao" target="_blank">GitHub</a>
+                        <a href="https://scholar.google.com/citations?user=84fexSEAAAAJ" target="_blank">Google Scholar</a>
+                        <a href="https://www.linkedin.com/in/jiarui-yao-a07281286/" target="_blank">LinkedIn</a>
+                        <a href="https://twitter.com/ExplainMiracles" target="_blank">X (Twitter)</a>
+                        <a href="https://reishiki.notion.site/blogs" target="_blank">Blog</a>
+                    </div>
+                </div>
+                <div class="header-photo">
+                    <img src="assets/pic_jiarui-480.png" alt="Jiarui Yao" class="profile-photo">
+                </div>
             </div>
         </header>
 
         <!-- About -->
-        <section class="section">
+        <section class="section" id="about">
             <h2>About</h2>
             <p>
-                I am a first-year CS PhD student at the Siebel School of Computing and Data Science,
+                I am a second-year CS PhD student at the Siebel School of Computing and Data Science,
                 University of Illinois at Urbana-Champaign, advised by
                 <a href="https://tongzhang-ml.org/" target="_blank">Prof. Tong Zhang</a>.
-            </p>
-            <p>
+                
                 My research focuses on reinforcement learning and large language models, with particular
                 interests in autonomous agents learning, model reasoning, and their interdisciplinary applications.
-            </p>
-            <p>
-                Before my PhD, I received my B.Eng. from Yao Class at Tsinghua University.
+                
+                Before my PhD, I received my B.Eng. from Yao Class (IIIS) at Tsinghua University.
+
+                I interned at Amazon, Ubiquant Hedge Fund, etc.
             </p>
         </section>
 
+        <!-- News -->
+        <section class="section" id="news">
+            <h2>News</h2>
+            <div id="news-container">
+                <p>Loading news...</p>
+            </div>
+        </section>
+
         <!-- Research -->
-        <section class="section">
+        <section class="section" id="research">
             <h2>Research Interests</h2>
             <p class="research-interests">
                 Reinforcement Learning, Large Language Models, Autonomous Agents, Model Reasoning,
@@ -53,8 +101,8 @@
         </section>
 
         <!-- Publications -->
-        <section class="section">
-            <h2>Publications</h2>
+        <section class="section" id="publications">
+            <h2>Selected Publications</h2>
             <div id="publications-container">
                 <!-- Publications will be loaded dynamically from publications.bib -->
                 <p>Loading publications...</p>
@@ -62,7 +110,7 @@
         </section>
 
         <!-- Education -->
-        <section class="section">
+        <section class="section" id="education">
             <h2>Education</h2>
 
             <div class="experience">
@@ -84,10 +132,31 @@
             </div>
         </section>
 
+        <!-- Services -->
+        <section class="section" id="services">
+            <h2>Academic Services</h2>
+
+            <div class="service-category">
+                <p class="service-title">Conference Reviewer</p>
+                <p>ACL 2025, NAACL 2025, EMNLP 2025</p>
+                <p class="service-title">Journal Reviewer</p>
+                <p>SIMODS</p>
+            </div>
+        </section>
+
+        <!-- Misc -->
+        <section class="section" id="misc">
+            <h2>Misc</h2>
+            <p>I enjoy playing badminton, swimming, and doing exercise during my free time.</p>
+        </section>
+
         <!-- Footer -->
         <footer class="footer">
-            <p>Last updated: January 2025</p>
+            <p>&copy; <span id="currentYear"></span> Jiarui Yao. All rights reserved.</p>
         </footer>
     </div>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>

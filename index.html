@@ -11,6 +11,7 @@
     <script src="js/publications.js"></script>
     <script src="js/news.js" defer></script>
     <script src="js/toc.js" defer></script>
+    <script src="js/animations.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -49,7 +50,7 @@
         <header class="header">
             <div class="header-content">
                 <div class="header-text">
-                    <h1 class="name">Jiarui Yao</h1>
+                    <h1 class="name darkmode-ignore">Jiarui Yao</h1>
                     <p class="title">Second-year CS PhD Student</p>
                     <p class="title">University of Illinois, Urbana-Champaign</p>
                 </div>
@@ -158,6 +159,26 @@
     </div>
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script>
+      function addDarkmodeWidget() {
+        const options = {
+            bottom: '32px',
+            right: 'unset',
+            left: '32px',
+            time: '0.5s',
+            mixColor: '#fff',
+            backgroundColor: '#fff',
+            buttonColorDark: '#100f2c',
+            buttonColorLight: '#fff',
+            saveInCookies: true,
+            label: '🌓',
+            autoMatchOsTheme: true
+        };
+        new Darkmode(options).showWidget();
+      }
+      window.addEventListener('load', addDarkmodeWidget);
     </script>
 </body>
 </html>

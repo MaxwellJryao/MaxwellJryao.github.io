@@ -27,10 +27,9 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a first-year CS PhD student in Siebel School of Computing and Data Science, University of Illinois, Urbana-Champaign (UIUC), with a great fortune to be supervised
-by Prof. <a href='https://tongzhang-ml.org/'>Tong Zhang</a>.
+I am a second-year CS PhD student in Siebel School of Computing and Data Science, University of Illinois, Urbana-Champaign (UIUC), with a great fortune to be supervised by Prof. <a href='https://tongzhang-ml.org/'>Tong Zhang</a>.
 
-I obtained a bachelor's degree of engineering (B.Eng.) from <a href='https://iiis.tsinghua.edu.cn/en/'>Yao Class</a>, <a href='https://www.tsinghua.edu.cn/en/'>Tsinghua University</a>. 
+I obtained a bachelor's degree of engineering (B.Eng.) from <a href='https://iiis.tsinghua.edu.cn/en/'>Yao Class (IIIS)</a>, <a href='https://www.tsinghua.edu.cn/en/'>Tsinghua University</a>. 
 
 My current research interests mainly focus on reinforcement learning, large language models, especially autonomous agents learning, model reasoning, and the interdisciplinary fields. If you are interested in my research or simply want a discussion or random chat, feel free to drop me an email and have a discussion.
 

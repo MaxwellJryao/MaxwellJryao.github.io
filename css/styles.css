@@ -253,6 +253,9 @@ html {
     max-width: 900px;
     margin: 0 auto;
     padding: 60px 40px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 /* Header */
@@ -342,6 +345,12 @@ html {
     border-radius: 8px;
     box-shadow: 0 2px 8px var(--shadow-color);
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .section h2 {
@@ -383,6 +392,9 @@ html {
     gap: 16px;
     margin-bottom: 12px;
     line-height: 1.6;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .news-date {
@@ -396,6 +408,20 @@ html {
 .news-content {
     color: var(--text-color-secondary);
     font-size: 0.95rem;
+    flex: 1;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.news-content p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.news-content a {
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .news-hidden {
@@ -455,12 +481,16 @@ html {
     color: var(--heading-color);
     margin-bottom: 8px;
     line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .pub-authors {
     color: var(--text-color-tertiary);
     font-size: 0.95rem;
     margin-bottom: 8px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .pub-venues {
@@ -497,12 +527,16 @@ html {
 
 .pub-links {
     font-size: 0.95rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .pub-links a {
     color: var(--link-color);
     text-decoration: none;
     transition: color 0.2s ease;
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .pub-links a:hover {
@@ -541,16 +575,25 @@ html {
 
 /* Responsive adjustments for publications with media */
 @media (max-width: 768px) {
-    .publication.has-.media {
+    .publication.has-media {
         flex-direction: column;
         align-items: center;
         gap: 16px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .pub-media {
-        width: 100%; /* Full width on small screens */
-        max-width: 240px; /* Limit max width even if full width */
-        height: auto; /* Adjust height automatically */
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+    .pub-media img,
+    .pub-media video {
+        max-width: 100%;
+        height: auto;
     }
 }
 
@@ -664,18 +707,43 @@ html {
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 40px 24px;
+    /* 防止整体溢出 */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
     }
 
+    .container {
+        padding: 40px 16px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    .section {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Header 区域 */
     .header-content {
         flex-direction: column-reverse;
         align-items: center;
         gap: 24px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .header-text {
         text-align: center;
+        width: 100%;
+        max-width: 100%;
     }
 
     .profile-photo {
@@ -685,31 +753,182 @@ html {
 
     .links {
         justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .links a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
     }
 
     .name {
         font-size: 2rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .title {
         font-size: 1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .section h2 {
         font-size: 1.25rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
-    .links {
-        gap: 16px;
+    .section p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
     }
 
+    /* 新闻区域 - 防止溢出 */
+    .news-item {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .news-date {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .news-content {
+        width: 100%;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        overflow-x: hidden;
+    }
+
+    .news-content p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+
+    .news-content a {
+        word-break: break-all;
+        overflow-wrap: break-word;
+    }
+
+    .news-toggle {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* 出版物区域 - 防止溢出 */
+    .publication {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    .pub-title {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        font-size: 1rem;
+    }
+
+    .pub-authors {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .pub-venues {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+
+    .pub-links {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .pub-links a {
+        word-break: break-all;
+        overflow-wrap: break-word;
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .pub-details {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Experience */
     .exp-header {
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
+        max-width: 100%;
     }
 
     .exp-date {
         margin-top: 4px;
+        word-wrap: break-word;
+    }
+
+    .exp-org {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+
+    .experience p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+
+    /* Services */
+    .service-category {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .service-category p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+
+    /* Research Interests */
+    .research-interests {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+
+    /* 数学公式 - 移动端防止溢出 */
+    .news-content .katex,
+    .news-content .katex-display {
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .news-content .katex-display {
+        margin: 1em 0;
     }
 }
 

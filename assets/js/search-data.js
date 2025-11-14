@@ -48,10 +48,7 @@ ninja.data = [{
           window.location.href = "/blog/2025/japan-travel/";
         
       },
-    },{id: "news-i-started-my-phd-journey-in-the-cs-school-of-uiuc-sparkles-smile",
-          title: 'I started my PhD journey in the CS School of UIUC. :sparkles: :smile:...',
-          description: "",
-          section: "News",},{id: "news-we-release-fans-formal-answer-selection-for-natural-language-reasoning-uinsg-lean4-enhancing-test-time-math-answer-selection-using-formal-language",
+    },{id: "news-we-release-fans-formal-answer-selection-for-natural-language-reasoning-uinsg-lean4-enhancing-test-time-math-answer-selection-using-formal-language",
           title: 'We release FANS - Formal Answer Selection for Natural Language Reasoning Uinsg Lean4,...',
           description: "",
           section: "News",},{id: "news-we-wrote-a-report-analyzing-what-makes-grpo-stand-out-for-math-reasoning-with-some-understanding-and-ablation-studies-to-compare-different-algorithms-for-llms-reasoning-training",
@@ -59,6 +56,9 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "news-we-released-gvm-gradient-variance-minimization-a-framework-to-improve-the-data-sampling-efficiency-in-llms-math-reasoning-starting-from-rejection-sampling-we-generalize-our-pipeline-to-rl-algorithms-like-grpo-and-present-corresponding-theoretical-analysis-for-our-algorithm",
           title: 'We released GVM - Gradient Variance Minimization, a framework to improve the data...',
+          description: "",
+          section: "News",},{id: "news-our-paper-micro-mixture-modeling-and-context-aware-routing-for-personalized-preference-learning-got-an-outstanding-paper-award-at-emnlp-2025-thanks-to-all-my-coauthors-and-supervisors",
+          title: 'Our paper, MiCRo: Mixture Modeling and Context-aware Routing for Personalized Preference Learning, got...',
           description: "",
           section: "News",},{
         id: 'social-github',

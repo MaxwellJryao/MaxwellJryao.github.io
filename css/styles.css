@@ -37,8 +37,8 @@ body.darkmode--activated {
     --border-color-light: #4a4a4a;
     --shadow-color: rgba(0, 0, 0, 0.2);
     --shadow-color-hover: rgba(0, 0, 0, 0.3);
-    --accent-background: #2a3a4a;
-    --accent-background-hover: #3a4a5a;
+    --accent-background: #252525;
+    --accent-background-hover: #2d2d2d;
     --button-background: #3a3a3a;
     --button-text-color: #e0e0e0;
     --button-border-color: #4a4a4a;
@@ -70,6 +70,24 @@ body {
 
 html {
     scroll-behavior: smooth;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--link-color), var(--link-color-hover));
+    z-index: 1000;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+}
+
+body.darkmode--activated .scroll-progress {
+    background: linear-gradient(90deg, var(--link-color), var(--link-color-hover));
+    box-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
 }
 
 /* Table of Contents */
@@ -285,12 +303,25 @@ html {
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 12px var(--shadow-color-hover);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    animation: fadeInScale 0.6s ease-out forwards;
 }
 
 .profile-photo:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 16px var(--shadow-color-hover);
+    transform: scale(1.08) rotate(2deg);
+    box-shadow: 0 8px 24px var(--shadow-color-hover);
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .name {
@@ -323,13 +354,35 @@ html {
     color: var(--link-color);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.2s ease;
+    transition: all 0.3s ease;
     font-size: 0.95rem;
     white-space: nowrap;
+    position: relative;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--accent-background);
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
 }
 
 .links a:hover {
     color: var(--link-color-hover);
+    transform: translateY(-2px);
+}
+
+.links a:hover::before {
+    opacity: 1;
 }
 
 .links a i {
@@ -344,13 +397,20 @@ html {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 2px 8px var(--shadow-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: all 0.3s ease;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     overflow-x: hidden;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px var(--shadow-color-hover);
 }
 
 .section h2 {
@@ -371,11 +431,27 @@ html {
     color: var(--link-color);
     text-decoration: none;
     transition: color 0.2s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.section p a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--link-color);
+    transition: width 0.3s ease;
 }
 
 .section p a:hover {
     color: var(--link-color-hover);
-    text-decoration: underline;
+}
+
+.section p a:hover::after {
+    width: 100%;
 }
 
 .research-interests {
@@ -537,10 +613,27 @@ html {
     transition: color 0.2s ease;
     word-break: break-all;
     overflow-wrap: break-word;
+    position: relative;
+    display: inline-block;
+}
+
+.pub-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--link-color);
+    transition: width 0.3s ease;
 }
 
 .pub-links a:hover {
     color: var(--link-color-hover);
+}
+
+.pub-links a:hover::after {
+    width: 100%;
 }
 
 /* Publications with Media */
@@ -682,13 +775,120 @@ html {
 /* Fade-in Animation */
 .fade-in-section {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-in-section.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Image Lazy Loading Animation */
+img:not(.profile-photo) {
+    transition: opacity 0.4s ease;
+}
+
+img[loading="lazy"]:not(.profile-photo) {
+    opacity: 0;
+}
+
+img.loaded:not(.profile-photo) {
+    opacity: 1;
+    animation: fadeInImage 0.5s ease-out;
+}
+
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* Smooth Page Load Animation */
+body {
+    animation: pageFadeIn 0.5s ease-out;
+}
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Publication Card Enhancements */
+.publication {
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 6px;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.publication:hover {
+    background-color: var(--accent-background);
+    transform: translateX(4px);
+    padding-left: 12px;
+}
+
+.pub-title {
+    transition: color 0.2s ease;
+}
+
+.publication:hover .pub-title {
+    color: var(--link-color);
+}
+
+/* Enhanced Button Hover Effects */
+.toc-toggle-btn,
+.theme-toggle-btn,
+.back-to-top {
+    position: relative;
+    overflow: hidden;
+}
+
+.toc-toggle-btn::before,
+.theme-toggle-btn::before,
+.back-to-top::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.toc-toggle-btn:hover::before,
+.theme-toggle-btn:hover::before,
+.back-to-top:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* News Item Hover Effect */
+.news-item {
+    transition: all 0.2s ease;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.news-item:hover {
+    background-color: var(--accent-background);
+    transform: translateX(4px);
+    padding-left: 12px;
 }
 
 /* Responsive Design */

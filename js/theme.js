@@ -1,6 +1,6 @@
 /**
  * Custom Theme Switcher (Dark -> Auto -> Light Cycle)
- * Defaults to 'auto' on every page load.
+ * Defaults to 'light' on every page load.
  */
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggleBtn = document.getElementById('themeToggleBtn');
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
 
     const THEME_CYCLE = ['dark', 'auto', 'light'];
-    let currentTheme = 'auto'; // In-session state
+    let currentTheme = 'light'; // In-session state
 
     const DAY_START_HOUR = 6;
     const DAY_END_HOUR = 18;
@@ -53,6 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme(nextTheme);
     });
 
-    // Apply 'auto' theme on initial load
-    applyTheme('auto');
+    // Apply 'light' theme on initial load
+    applyTheme('light');
 });

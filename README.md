@@ -1,6 +1,104 @@
-# Jiarui Yao
+# A Minimalist Personal Homepage
 
-Personal homepage featuring a clean, minimalist design.
+A modern, single-page academic homepage featuring a clean, minimalist design with enhanced visual effects and interactive features.
+
+## Features
+
+### Core Functionality
+- **Single-page design** - All content on one page with smooth scrolling navigation
+- **Dynamic content loading** - Publications loaded from BibTeX, news from YAML
+- **Responsive design** - Optimized for desktop, tablet, and mobile devices
+- **Dark/Light theme** - Automatic theme switching with manual override option
+- **Table of Contents** - Fixed sidebar navigation for easy section access
+
+### Visual Enhancements
+- **Scroll progress bar** - Visual indicator at the top showing reading progress
+- **Smooth animations** - Fade-in effects for sections as you scroll
+- **Interactive cards** - Hover effects on sections, publications, and news items
+- **Animated links** - Underline animations on text links
+- **Image lazy loading** - Optimized image loading with blur-to-clear transitions
+- **Profile photo animation** - Elegant scale and fade-in effect
+
+### Special Features
+- **Random Chinese Poetry** - Displays random classical Chinese poetry from API (located at the bottom)
+- **Publication management** - Easy BibTeX-based publication system
+- **News feed** - YAML-based news updates with Markdown support
+- **Academic services** - Clean display of conference/journal reviewing activities
+
+## Project Structure
+
+```
+githubid.github.io/
+├── index.html              # Main HTML file
+├── css/
+│   └── styles.css          # All styles (responsive, dark mode, animations)
+├── js/
+│   ├── animations.js       # Scroll-based fade-in animations
+│   ├── enhancements.js     # Scroll progress, image lazy loading
+│   ├── news.js             # News loader from YAML
+│   ├── publications.js     # BibTeX parser and publication renderer
+│   ├── poetry.js           # Chinese poetry API integration
+│   ├── theme.js            # Dark/Light theme switcher
+│   └── toc.js              # Table of contents navigation
+├── data/
+│   ├── news.yaml           # News entries in YAML format
+│   └── publications.bib    # Publications in BibTeX format
+├── assets/
+│   ├── favicon1.png        # Site favicon
+│   ├── pic_jiarui-480.png  # Profile photo
+│   └── pub_media/          # Publication media (images/videos)
+└── README.md               # This file
+```
+
+## Customization
+
+### Personal Information
+Edit `index.html` to update:
+- Name, title, affiliation
+- Email address
+- Social media links
+- Profile photo path
+- About section content
+- Education details
+- Academic services
+
+### Publications
+1. Edit `data/publications.bib` in BibTeX format
+2. Add `selected = {true}` to publications you want to display
+3. Add `media = {path/to/image.png}` for publication thumbnails
+4. Supported fields: `title`, `author`, `year`, `venues`, `arxiv`, `webpage`, `code`, `media`, `selected`
+
+Example BibTeX entry:
+```bibtex
+@article{example2024,
+    title = {Example Paper Title},
+    author = {Author One and Author Two and Author Three},
+    year = {2024},
+    venues = {Conference Name, 2024 | Journal Name, 2024 [Best Paper]},
+    arxiv = {https://arxiv.org/abs/xxxx.xxxxx},
+    webpage = {https://example.com},
+    code = {https://github.com/example},
+    media = {assets/pub_media/example.png},
+    selected = {true}
+}
+```
+
+### News
+Edit `data/news.yaml` to add news entries:
+```yaml
+- date: "2024-01-15"
+  content: "News content with **Markdown** support and [links](https://example.com)"
+```
+
+### Styling
+- **Colors**: Edit CSS variables in `css/styles.css` (lines 1-47)
+- **Fonts**: Change font-family in `css/styles.css` (currently using Inter)
+- **Layout**: Adjust container max-width, padding, margins in `css/styles.css`
+
+### Poetry Display
+- Located at the bottom of the page (after Misc section)
+- Uses [今日诗词 API](https://www.jinrishici.com/) for random Chinese poetry
+- Can be disabled by removing the poetry container from `index.html` and `poetry.js` script tag
 
 ## Local Development
 
@@ -12,70 +110,72 @@ python3 -m http.server 8000
 
 Then visit `http://localhost:8000`
 
+**Note**: For local development, you may need to serve files via HTTP server (not `file://`) due to CORS restrictions when loading YAML and BibTeX files.
+
 ## Deployment to GitHub Pages
 
-### 方法一：使用 GitHub 网页界面（最简单）
+### Method 1: Using GitHub Web Interface (Simplest)
 
-1. **创建 GitHub 仓库**
-   - 访问 [GitHub](https://github.com) 并登录
-   - 点击右上角的 "+" 按钮，选择 "New repository"
-   - 仓库名称必须为：`MaxwellJryao.github.io`（与你的 GitHub 用户名匹配）
-   - 设置为 Public（GitHub Pages 免费版需要公开仓库）
-   - 不要初始化 README、.gitignore 或 license（因为本地已有文件）
+1. **Create GitHub Repository**
+   - Visit [GitHub](https://github.com) and log in
+   - Click the "+" button in the top right, select "New repository"
+   - Repository name must be: `githubid.github.io` (matching your GitHub username)
+   - Set to Public (GitHub Pages free tier requires public repositories)
+   - Don't initialize README, .gitignore, or license (local files already exist)
 
-2. **上传文件到 GitHub**
-   - 在项目根目录执行以下命令：
+2. **Upload Files to GitHub**
+   - In the project root directory, run:
    ```bash
-   cd /shared/storage-01/jiarui14/personal/homepage/MaxwellJryao.github.io
+   cd /path/to/githubid.github.io
    git init
    git add .
    git commit -m "Initial commit"
    git branch -M main
-   git remote add origin https://github.com/MaxwellJryao/MaxwellJryao.github.io.git
+   git remote add origin https://github.com/githubid/githubid.github.io.git
    git push -u origin main
    ```
 
-3. **启用 GitHub Pages**
-   - 在 GitHub 仓库页面，点击 "Settings"（设置）
-   - 在左侧菜单中找到 "Pages"
-   - 在 "Source" 部分，选择 "Deploy from a branch"
-   - Branch 选择 `main`，文件夹选择 `/ (root)`
-   - 点击 "Save"
+3. **Enable GitHub Pages**
+   - In the GitHub repository page, click "Settings"
+   - Find "Pages" in the left menu
+   - Under "Source", select "Deploy from a branch"
+   - Branch: `main`, Folder: `/ (root)`
+   - Click "Save"
 
-4. **访问网站**
-   - 等待几分钟后，访问：`https://MaxwellJryao.github.io`
-   - GitHub Pages 通常需要几分钟来构建和部署
+4. **Access Website**
+   - Wait a few minutes, then visit: `https://githubid.github.io`
+   - GitHub Pages usually takes a few minutes to build and deploy
 
-### 方法二：使用命令行（推荐）
+### Method 2: Using Command Line (Recommended)
 
-如果你已经在本地配置了 Git，可以使用以下命令：
+If you already have Git configured locally:
 
 ```bash
-# 进入项目目录
-cd /shared/storage-01/jiarui14/personal/homepage/MaxwellJryao.github.io
+# Navigate to project directory
+cd /path/to/githubid.github.io
 
-# 初始化 Git 仓库（如果还没有）
+# Initialize Git repository (if not already done)
 git init
 
-# 添加所有文件
+# Add all files
 git add .
 
-# 提交更改
+# Commit changes
 git commit -m "Initial commit"
 
-# 添加远程仓库（替换为你的实际仓库 URL）
-git remote add origin https://github.com/MaxwellJryao/MaxwellJryao.github.io.git
+# Add remote repository (replace with your actual repository URL)
+git remote add origin https://github.com/githubid/githubid.github.io.git
 
-# 推送到 GitHub
+# Push to GitHub
 git branch -M main
 git push -u origin main
 ```
 
-然后按照方法一的第3步启用 GitHub Pages。
+Then follow Method 1, Step 3 to enable GitHub Pages.
 
-### 更新网站
+### Updating the Website
 
-每次修改后，使用以下命令更新：
+After making changes, update with:
 
 ```bash
 git add .
@@ -83,13 +183,38 @@ git commit -m "Update website"
 git push
 ```
 
-GitHub Pages 会自动重新部署（通常需要几分钟）。
+GitHub Pages will automatically redeploy (usually takes a few minutes).
 
-### 注意事项
+## Technical Details
 
-- ✅ 仓库名称必须是 `用户名.github.io` 格式
-- ✅ 确保 `.nojekyll` 文件存在（已创建，用于禁用 Jekyll 处理）
-- ✅ `_site/` 目录已在 `.gitignore` 中，不会被提交
-- ✅ 所有静态文件（HTML、CSS、JS、图片等）都在根目录或子目录中
-- ⚠️ 首次部署可能需要 5-10 分钟才能生效
-- ⚠️ 如果使用自定义域名，需要在仓库 Settings > Pages 中配置
+### Dependencies
+- **Font Awesome** - Icons (loaded via CDN)
+- **Inter Font** - Google Fonts (loaded via CDN)
+- **js-yaml** - YAML parser for news (loaded via CDN)
+- **marked** - Markdown parser for news content (loaded via CDN)
+- **KaTeX** - Math rendering (loaded via CDN, optional)
+- **今日诗词 API** - Chinese poetry API (external)
+
+### Browser Support
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Responsive design works on mobile devices
+- Dark mode supported in all modern browsers
+
+### Performance
+- Lazy loading for images
+- Intersection Observer API for scroll animations
+- RequestAnimationFrame for smooth scroll progress
+- Minimal external dependencies
+
+## Notes
+
+- ✅ Repository name must be in `username.github.io` format
+- ✅ `.nojekyll` file ensures GitHub Pages serves static files directly (no Jekyll processing)
+- ✅ All static files (HTML, CSS, JS, images) are in root or subdirectories
+- ⚠️ First deployment may take 5-10 minutes to take effect
+- ⚠️ If using a custom domain, configure it in repository Settings > Pages
+- ⚠️ Poetry API requires internet connection to fetch random poems
+
+## License
+
+See [LICENSE](LICENSE) file for details.

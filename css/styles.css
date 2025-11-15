@@ -389,6 +389,101 @@ body.darkmode--activated .scroll-progress {
     margin-right: 8px;
 }
 
+/* Poetry Display */
+.poetry-container {
+    margin: 32px 0 48px 0;
+    padding: 24px 32px;
+    background: linear-gradient(135deg, var(--accent-background) 0%, transparent 100%);
+    border-left: 3px solid var(--link-color);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.poetry-container.loaded {
+    opacity: 1;
+}
+
+.poetry-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.poetry-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    opacity: 0.7;
+}
+
+.poetry-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color-secondary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-style: italic;
+    letter-spacing: 0.02em;
+}
+
+.poetry-author {
+    font-size: 0.9rem;
+    color: var(--text-color-muted);
+    text-align: right;
+    font-style: normal;
+}
+
+.poetry-refresh {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid var(--border-color-light);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color-tertiary);
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.poetry-refresh:hover {
+    background: var(--accent-background);
+    border-color: var(--link-color);
+    color: var(--link-color);
+    transform: rotate(180deg);
+}
+
+.poetry-refresh svg {
+    width: 16px;
+    height: 16px;
+}
+
+.poetry-container.loading .poetry-refresh {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* Sections */
 .section {
     margin-bottom: 48px;
@@ -975,6 +1070,29 @@ body {
         font-size: 1rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
+    }
+
+    /* Poetry Display - Mobile */
+    .poetry-container {
+        margin: 24px 0 32px 0;
+        padding: 20px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .poetry-text {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .poetry-author {
+        text-align: left;
+        font-size: 0.85rem;
+    }
+
+    .poetry-refresh {
+        align-self: flex-end;
     }
 
     .section h2 {

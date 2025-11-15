@@ -18,6 +18,7 @@
     <script src="js/animations.js" defer></script>
     <script src="js/theme.js" defer></script>
     <script src="js/enhancements.js" defer></script>
+    <script src="js/poetry.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -84,6 +85,22 @@
                 <a href="https://reishiki.notion.site/blogs" target="_blank"><i class="fas fa-blog"></i> Blog</a>
             </div>
         </header>
+
+        <!-- Poetry Display -->
+        <div class="poetry-container" id="poetryContainer">
+            <div class="poetry-content">
+                <div class="poetry-label">Random Chinese Poetry</div>
+                <div class="poetry-text" id="poetryText">Loading...</div>
+                <div class="poetry-author" id="poetryAuthor"></div>
+            </div>
+            <button class="poetry-refresh" id="poetryRefresh" title="换一首 / Refresh">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+            </button>
+        </div>
 
         <!-- About -->
         <section class="section" id="about">

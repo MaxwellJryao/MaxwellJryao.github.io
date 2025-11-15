@@ -278,8 +278,8 @@ body.darkmode--activated .scroll-progress {
 
 /* Header */
 .header {
-    margin-bottom: 60px;
-    padding-bottom: 40px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
 }
 
 .header-content {
@@ -1074,7 +1074,7 @@ body {
 
     /* Poetry Display - Mobile */
     .poetry-container {
-        margin: 24px 0 32px 0;
+        margin: 0 0 32px 0;
         padding: 20px 16px;
         flex-direction: column;
         align-items: flex-start;

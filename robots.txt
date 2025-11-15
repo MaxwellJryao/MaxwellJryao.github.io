@@ -1,7 +1,28 @@
----
-permalink: /robots.txt
----
-User-agent: *
-Disallow:
+# robots.txt - 限制爬虫访问个人信息
 
-Sitemap: {{ site.baseurl | prepend: site.url }}/sitemap.xml
+# 允许搜索引擎索引主要页面
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+
+# 禁止爬取可能包含个人信息的页面和资源
+Disallow: /data/
+Disallow: /*.yaml
+Disallow: /*.bib
+Disallow: /_site/
+
+# 禁止特定爬虫（可选，根据需要取消注释）
+# User-agent: AhrefsBot
+# Disallow: /
+
+# User-agent: SemrushBot
+# Disallow: /
+
+# User-agent: DotBot
+# Disallow: /
+
+# 允许搜索引擎访问 sitemap（如果有）
+# Sitemap: https://MaxwellJryao.github.io/sitemap.xml

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiarui Yao</title>
+    <link rel="icon" href="assets/favicon1.png" type="image/png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="js/publications.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous" defer></script>
+    <script src="js/news.js" defer></script>
+    <script src="js/toc.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/enhancements.js" defer></script>
+    <script src="js/poetry.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- TOC Toggle Button -->
+    <button class="toc-toggle-btn" id="tocToggleBtn" title="Toggle navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+    <div id="theme-switcher-container">
+        <button id="themeToggleBtn" class="theme-toggle-btn">
+            🌓
+            <span class="auto-label">auto</span>
+        </button>
+    </div>
+
+    <!-- Table of Contents -->
+    <nav class="toc" id="tocNav">
+        <div class="toc-content">
+            <h3 class="toc-title">Contents</h3>
+            <ul class="toc-list">
+                <li><a href="#about" class="toc-link">About</a></li>
+                <li><a href="#news" class="toc-link">News</a></li>
+                <li><a href="#research" class="toc-link">Research</a></li>
+                <li><a href="#publications" class="toc-link">Publications</a></li>
+                <li><a href="#education" class="toc-link">Education</a></li>
+                <li><a href="#services" class="toc-link">Services</a></li>
+                <li><a href="#misc" class="toc-link">Misc</a></li>
+            </ul>
+            <button class="back-to-top" id="backToTop" title="Back to top">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1 class="name darkmode-ignore">Jiarui Yao</h1>
+                    <p class="title">Second-year CS PhD Student</p>
+                    <p class="title">University of Illinois, Urbana-Champaign</p>
+                    <p class="title">Email: jiarui14 [at] illinois [dot] edu</p>
+                </div>
+                <div class="header-photo">
+                    <img src="assets/pic_jiarui-480.png" alt="Jiarui Yao" class="profile-photo">
+                </div>
+            </div>
+            <div class="links">
+                <a href="mailto:jiarui14@illinois.edu"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://github.com/MaxwellJryao" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://scholar.google.com/citations?user=84fexSEAAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+                <a href="https://www.linkedin.com/in/jiarui-yao-a07281286/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://twitter.com/ExplainMiracles" target="_blank"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+                <a href="https://reishiki.notion.site/blogs" target="_blank"><i class="fas fa-blog"></i> Blog</a>
+            </div>
+        </header>
+
+        <!-- About -->
+        <section class="section" id="about">
+            <h2>About</h2>
+            <p>
+                I am a second-year CS PhD student at the Siebel School of Computing and Data Science,
+                University of Illinois at Urbana-Champaign, advised by
+                <a href="https://tongzhang-ml.org/" target="_blank">Prof. Tong Zhang</a>.
+                
+                My research focuses on reinforcement learning and large language models, with particular
+                interests in autonomous agents learning, model reasoning, and their interdisciplinary applications.
+                
+                Before my PhD, I received my B.Eng. from <a href="https://iiis.tsinghua.edu.cn/en/" target="_blank">Yao Class (IIIS)</a> at Tsinghua University.
+
+                I interned at Amazon, Ubiquant Hedge Fund, etc.
+            </p>
+            <p>Feel free to drop me an email if you are interested in my research or just want to chat!</p>
+        </section>
+
+        <!-- News -->
+        <section class="section" id="news">
+            <h2>News</h2>
+            <div id="news-container">
+                <p>Loading news...</p>
+            </div>
+        </section>
+
+        <!-- Research -->
+        <section class="section" id="research">
+            <h2>Research Interests</h2>
+            <p class="research-interests">
+                Reinforcement Learning, Large Language Models, Autonomous Agents, Model Reasoning,
+                and Interdisciplinary Applications
+            </p>
+        </section>
+
+        <!-- Publications -->
+        <section class="section" id="publications">
+            <h2>Selected Publications</h2>
+            <p style="font-size: 0.85em; color: #888; margin-top: -0.5em; margin-bottom: 1em;">* indicates equal contribution</p>
+            <div id="publications-container">
+                <!-- Publications will be loaded dynamically from publications.bib -->
+                <p>Loading publications...</p>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="section" id="education">
+            <h2>Education</h2>
+
+            <div class="experience">
+                <div class="exp-header">
+                    <strong>Ph.D. in Computer Science</strong>
+                    <span class="exp-date">2024 - Present</span>
+                </div>
+                <div class="exp-org">University of Illinois at Urbana-Champaign</div>
+                <p>Advisor: <a href="https://tongzhang-ml.org/" target="_blank">Prof. Tong Zhang</a></p>
+            </div>
+
+            <div class="experience">
+                <div class="exp-header">
+                    <strong>B.Eng.</strong>
+                    <span class="exp-date">2020 - 2024</span>
+                </div>
+                <div class="exp-org">Tsinghua University</div>
+                <p>Yao Class (Special Pilot CS Class)</p>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="section" id="services">
+            <h2>Academic Services</h2>
+
+            <div class="service-category">
+                <p class="service-title">Conference Reviewer</p>
+                <p>ACL 2025, NAACL 2025, EMNLP 2025</p>
+                <p class="service-title">Journal Reviewer</p>
+                <p>SIMODS</p>
+            </div>
+        </section>
+
+        <!-- Misc -->
+        <section class="section" id="misc">
+            <h2>Misc</h2>
+            <p>I enjoy playing badminton, swimming, and doing exercise during my free time.</p>
+        </section>
+
+        <!-- Poetry Display -->
+        <div class="poetry-container" id="poetryContainer">
+            <div class="poetry-content">
+                <div class="poetry-label">Random Chinese Poetry</div>
+                <div class="poetry-text" id="poetryText">Loading...</div>
+                <div class="poetry-author" id="poetryAuthor"></div>
+            </div>
+            <button class="poetry-refresh" id="poetryRefresh" title="换一首 / Refresh">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; <span id="currentYear"></span> Jiarui Yao. All rights reserved.</p>
+        </footer>
+    </div>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

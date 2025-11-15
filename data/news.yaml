@@ -1,0 +1,28 @@
+- date: '2025-11'
+  content: >
+    Our paper, *MiCRo: Mixture Modeling and Context-aware Routing for Personalized Preference Learning*, 
+    received the **Outstanding Paper Award** from EMNLP 2025. Thanks to all my coauthors and supervisors.
+
+- date: '2025-11'
+  content: >
+    I was invited by Nanjing University to give a talk about "Optimizing LLM Reasoning from Data Efficiency and RL".
+
+- date: '2025-05'
+  content: >
+    We released [GVM - Gradient Variance Minimization](https://github.com/RLHFlow/GVM), a framework to improve the 
+    data sampling efficiency in LLMs math reasoning. Starting from rejection sampling, we generalize our pipeline 
+    to RL algorithms like GRPO, and present corresponding theoretical analysis for our algorithm.
+
+- date: '2025-04'
+  content: >
+    We wrote a report analyzing what makes GRPO “stand out” for math reasoning, with some understanding and 
+    ablation studies to compare different algorithms for LLMs reasoning training.
+
+- date: '2025-03'
+  content: >
+    We release FANS - Formal Answer Selection for Natural Language Reasoning Uinsg Lean4, enhancing test-time 
+    math answer selection using formal language.
+
+- date: '2024-08'
+  content: >
+    Started my PhD journey at University of Illinois at Urbana-Champaign.

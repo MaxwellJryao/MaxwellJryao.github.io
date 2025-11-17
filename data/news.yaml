@@ -1,7 +1,6 @@
 - date: '2025-11'
   content: >
-    Our paper, [MiCRo: Mixture Modeling and Context-aware Routing for Personalized Preference Learning](http://arxiv.org/abs/2505.24846), 
-    received the **Outstanding Paper Award** from EMNLP 2025. Thanks to all my coauthors and supervisors.n
+    Our paper, [MiCRo: Mixture Modeling and Context-aware Routing for Personalized Preference Learning](http://arxiv.org/abs/2505.24846), received the **Outstanding Paper Award** from EMNLP 2025. Thanks to all my coauthors and supervisors.
 
 - date: '2025-11'
   content: >
@@ -20,7 +19,7 @@
 
 - date: '2025-03'
   content: >
-    We release [FANS - Formal Answer Selection for Natural Language Reasoning Uinsg Lean4](http://arxiv.org/abs/2503.03238), enhancing test-time 
+    We release [FANS - Formal Answer Selection for Natural Language Reasoning Using Lean4](http://arxiv.org/abs/2503.03238), enhancing test-time 
     math answer selection using formal language.
 
 - date: '2024-08'

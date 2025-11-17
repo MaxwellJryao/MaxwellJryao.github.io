@@ -525,28 +525,17 @@ body.darkmode--activated .scroll-progress {
 .section p a {
     color: var(--link-color);
     text-decoration: none;
-    transition: color 0.2s ease;
-    position: relative;
-    display: inline-block;
-}
-
-.section p a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--link-color);
-    transition: width 0.3s ease;
+    transition: all 0.2s ease;
+    display: inline;
+    background-image: linear-gradient(var(--link-color), var(--link-color));
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
 }
 
 .section p a:hover {
     color: var(--link-color-hover);
-}
-
-.section p a:hover::after {
-    width: 100%;
+    background-size: 100% 2px;
 }
 
 .research-interests {
@@ -591,8 +580,20 @@ body.darkmode--activated .scroll-progress {
 }
 
 .news-content a {
-    word-break: break-all;
     overflow-wrap: break-word;
+    display: inline;
+    color: var(--link-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background-image: linear-gradient(var(--link-color), var(--link-color));
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+.news-content a:hover {
+    color: var(--link-color-hover);
+    background-size: 100% 2px;
 }
 
 .news-hidden {
@@ -705,30 +706,18 @@ body.darkmode--activated .scroll-progress {
 .pub-links a {
     color: var(--link-color);
     text-decoration: none;
-    transition: color 0.2s ease;
-    word-break: break-all;
+    transition: all 0.2s ease;
     overflow-wrap: break-word;
-    position: relative;
-    display: inline-block;
-}
-
-.pub-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--link-color);
-    transition: width 0.3s ease;
+    display: inline;
+    background-image: linear-gradient(var(--link-color), var(--link-color));
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
 }
 
 .pub-links a:hover {
     color: var(--link-color-hover);
-}
-
-.pub-links a:hover::after {
-    width: 100%;
+    background-size: 100% 2px;
 }
 
 /* Publications with Media */
@@ -1136,8 +1125,12 @@ body {
     }
 
     .news-content a {
-        word-break: break-all;
         overflow-wrap: break-word;
+        display: inline;
+    }
+
+    .news-content a:hover {
+        background-size: 100% 2px;
     }
 
     .news-toggle {
@@ -1181,10 +1174,13 @@ body {
     }
 
     .pub-links a {
-        word-break: break-all;
         overflow-wrap: break-word;
-        display: inline-block;
+        display: inline;
         max-width: 100%;
+    }
+
+    .pub-links a:hover {
+        background-size: 100% 2px;
     }
 
     .pub-details {

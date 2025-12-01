@@ -174,13 +174,14 @@ body.darkmode--activated .profile-photo:hover {
 
 .auto-label {
     position: absolute;
-    bottom: 0px;
-    right: 0px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 0.6rem;
     font-weight: 600;
     color: var(--text-color-tertiary);
     background-color: var(--card-background-color);
-    padding: 0 2px;
+    padding: 0 1px;
     border-radius: 3px;
     opacity: 0;
     transition: opacity 0.2s ease;
@@ -1049,6 +1050,24 @@ body {
         overflow-x: hidden;
         width: 100%;
         max-width: 100%;
+    }
+
+    /* 移动端主题切换按钮 - 移到右上角并缩小 */
+    #theme-switcher-container {
+        left: auto;
+        right: 16px;
+        bottom: auto;
+        top: 16px;
+    }
+
+    .theme-toggle-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .auto-label {
+        font-size: 0.55rem;
     }
 
     .container {

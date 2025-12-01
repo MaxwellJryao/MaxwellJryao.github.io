@@ -555,6 +555,51 @@ body.darkmode--activated .profile-photo:hover {
     margin-bottom: 12px;
 }
 
+/* News scrollable container */
+#news-container {
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8px;
+}
+
+/* Scrollbar styling */
+#news-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#news-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 3px;
+}
+
+#news-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+#news-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+body.darkmode--activated #news-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.darkmode--activated #news-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Firefox scrollbar */
+#news-container {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+}
+
+body.darkmode--activated #news-container {
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
 .news-item {
     display: flex;
     gap: 16px;
@@ -1105,6 +1150,10 @@ body {
     }
 
     /* 新闻区域 - 防止溢出 */
+    #news-container {
+        max-height: 400px;
+    }
+
     .news-item {
         flex-direction: column;
         gap: 8px;

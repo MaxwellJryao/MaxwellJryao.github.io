@@ -220,54 +220,12 @@
                 return;
             }
 
-            // Split news into visible and hidden
-            const visibleNews = newsItems.slice(0, NEWS_DISPLAY_LIMIT);
-            const hiddenNews = newsItems.slice(NEWS_DISPLAY_LIMIT);
-
-            // Generate HTML for visible news
+            // Generate HTML for all news items
             let html = '<div class="news-list">';
-            html += visibleNews.map(item => generateNewsItemHTML(item)).join('');
+            html += newsItems.map(item => generateNewsItemHTML(item)).join('');
             html += '</div>';
 
-            // Add hidden news if any
-            if (hiddenNews.length > 0) {
-                html += '<div class="news-list news-hidden" id="hiddenNews" style="display: none;">';
-                html += hiddenNews.map(item => generateNewsItemHTML(item)).join('');
-                html += '</div>';
-
-                html += `
-                    <button class="news-toggle" id="newsToggle">
-                        <span class="toggle-text">Show ${hiddenNews.length} older news</span>
-                        <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </button>
-                `;
-            }
-
             container.innerHTML = html;
-
-            // Add toggle functionality
-            const toggleBtn = document.getElementById('newsToggle');
-            const hiddenNewsDiv = document.getElementById('hiddenNews');
-
-            if (toggleBtn && hiddenNewsDiv) {
-                let isExpanded = false;
-
-                toggleBtn.addEventListener('click', function() {
-                    isExpanded = !isExpanded;
-
-                    if (isExpanded) {
-                        hiddenNewsDiv.style.display = 'block';
-                        this.querySelector('.toggle-text').textContent = 'Show less';
-                        this.querySelector('.toggle-icon').style.transform = 'rotate(180deg)';
-                    } else {
-                        hiddenNewsDiv.style.display = 'none';
-                        this.querySelector('.toggle-text').textContent = `Show ${hiddenNews.length} older news`;
-                        this.querySelector('.toggle-icon').style.transform = 'rotate(0deg)';
-                    }
-                });
-            }
 
             console.log('News rendered successfully');
         } catch (error) {

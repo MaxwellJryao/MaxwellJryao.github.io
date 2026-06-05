@@ -10,6 +10,7 @@
     let items = [];
     let currentIndex = 0;
     let lightbox, lightboxImg, lightboxCaption;
+    let hiresToken = 0; // Guards against out-of-order high-res loads
 
     function waitForJsYaml() {
         return new Promise((resolve, reject) => {
@@ -74,10 +75,30 @@
         if (!items.length) return;
         currentIndex = (index + items.length) % items.length;
         const item = items[currentIndex];
-        lightboxImg.src = item.src;
         lightboxImg.alt = item.alt || item.caption || '';
         lightboxCaption.textContent = item.caption || '';
         lightboxCaption.style.display = item.caption ? '' : 'none';
+
+        // Progressive load: show the (cached) thumbnail instantly, then swap in
+        // the full-resolution image once it has finished downloading.
+        const thumb = item.thumb || item.src;
+        const token = ++hiresToken;
+        lightboxImg.src = thumb;
+        if (item.src && item.src !== thumb) {
+            lightbox.classList.add('lightbox-loading');
+            const full = new Image();
+            full.onload = () => {
+                if (token === hiresToken) {
+                    lightboxImg.src = item.src;
+                    lightbox.classList.remove('lightbox-loading');
+                }
+            };
+            full.onerror = () => { if (token === hiresToken) lightbox.classList.remove('lightbox-loading'); };
+            full.src = item.src;
+        } else {
+            lightbox.classList.remove('lightbox-loading');
+        }
+
         const single = items.length <= 1;
         lightbox.querySelector('.lightbox-prev').style.display = single ? 'none' : '';
         lightbox.querySelector('.lightbox-next').style.display = single ? 'none' : '';
@@ -110,7 +131,7 @@
             figure.setAttribute('aria-label', item.caption || 'Open photo');
 
             const img = document.createElement('img');
-            img.src = item.src;
+            img.src = item.thumb || item.src; // Low-res thumbnail for fast loading
             img.alt = item.alt || item.caption || '';
             img.loading = 'lazy';
             img.addEventListener('load', () => img.classList.add('loaded'), { once: true });

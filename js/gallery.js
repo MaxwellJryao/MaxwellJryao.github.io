@@ -25,6 +25,7 @@
     // Lightbox state
     let lightbox, lightboxImg, lightboxCaption;
     let lightboxIndex = 0; // Real index currently shown in the lightbox
+    let hiresToken = 0;    // Guards against out-of-order high-res loads
 
     function waitForJsYaml() {
         return new Promise((resolve, reject) => {
@@ -51,7 +52,7 @@
         slide.dataset.real = String(realIndex);
 
         const img = document.createElement('img');
-        img.src = item.src;
+        img.src = item.thumb || item.src; // Low-res thumbnail for fast loading
         img.alt = item.alt || item.caption || '';
         img.loading = 'lazy';
         img.addEventListener('load', () => img.classList.add('loaded'), { once: true });
@@ -275,10 +276,30 @@
         if (!realLen) return;
         lightboxIndex = (realIndex + realLen) % realLen;
         const item = items[lightboxIndex];
-        lightboxImg.src = item.src;
         lightboxImg.alt = item.alt || item.caption || '';
         lightboxCaption.textContent = item.caption || '';
         lightboxCaption.style.display = item.caption ? '' : 'none';
+
+        // Progressive load: show the (cached) thumbnail instantly, then swap in
+        // the full-resolution image once it has finished downloading.
+        const thumb = item.thumb || item.src;
+        const token = ++hiresToken;
+        lightboxImg.src = thumb;
+        if (item.src && item.src !== thumb) {
+            lightbox.classList.add('lightbox-loading');
+            const full = new Image();
+            full.onload = () => {
+                if (token === hiresToken) {
+                    lightboxImg.src = item.src;
+                    lightbox.classList.remove('lightbox-loading');
+                }
+            };
+            full.onerror = () => { if (token === hiresToken) lightbox.classList.remove('lightbox-loading'); };
+            full.src = item.src;
+        } else {
+            lightbox.classList.remove('lightbox-loading');
+        }
+
         // Keep the carousel in sync (silently, behind the overlay)
         goToReal(lightboxIndex, false);
         const single = realLen <= 1;

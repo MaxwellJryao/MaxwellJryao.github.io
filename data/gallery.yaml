@@ -1,21 +1,32 @@
-# Photo gallery (carousel)
-# Each entry becomes a slide in the carousel; click a slide to open the full-size lightbox.
+# Photo gallery (carousel + detail page)
+# Each entry becomes a slide in the carousel and a tile on gallery.html;
+# click it to open the full-size lightbox.
 #
 # Fields:
-#   src     (required) path to the image, e.g. assets/gallery/hiking.jpg
-#   caption (optional) short text shown over the slide and in the lightbox
+#   src     (required) full-resolution image, shown in the lightbox
+#   thumb   (optional) low-res image for fast thumbnail loading in the
+#           carousel/grid; falls back to `src` if omitted
+#   caption (optional) short text shown over the photo and in the lightbox
 #   alt     (optional) accessibility text (defaults to caption / filename)
+#
+# Tip: generate a thumbnail (e.g. ~800px JPEG) for each photo so the gallery
+# loads fast, while the lightbox still shows the crisp original.
 #
 # NOTE: The images below are AI-generated placeholders. Replace them with your
 # own photos by dropping files into assets/gallery/ and editing the entries.
 
 - src: assets/gallery/gallery-badminton.png
+  thumb: assets/gallery/thumbs/gallery-badminton.jpg
   caption: "Badminton — one of my favorite ways to unwind"
 - src: assets/gallery/gallery-swimming.png
+  thumb: assets/gallery/thumbs/gallery-swimming.jpg
   caption: "Laps at the pool"
 - src: assets/gallery/gallery-campus.png
+  thumb: assets/gallery/thumbs/gallery-campus.jpg
   caption: "Campus in the fall"
 - src: assets/gallery/gallery-mountains.png
+  thumb: assets/gallery/thumbs/gallery-mountains.jpg
   caption: "Sunrise over the mountains"
 - src: assets/gallery/gallery-city.png
+  thumb: assets/gallery/thumbs/gallery-city.jpg
   caption: "City lights by the river"

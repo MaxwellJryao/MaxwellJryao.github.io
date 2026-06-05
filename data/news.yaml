@@ -1,3 +1,10 @@
+- date: '2026-01'
+  content: >
+    We released [Future-KL Regularized GRPO: Process-Level Credit Assignment from f-Divergence Regularization](https://arxiv.org/abs/2601.10201).
+    We show that GRPO's loss-side token KL penalty misses the policy-gradient signal from autoregressive KL regularization, and derive a simple
+    **future-KL correction** (a reverse cumulative sum of per-token log ratios). The resulting method, **FRPO**,
+    improves pass@16 on math reasoning while keeping higher entropy and lower policy drift than conventional KL baselines.
+
 - date: '2025-11'
   content: >
     Our paper, [Why is Your Language Model a Poor Implicit Reward Model?](https://arxiv.org/abs/2507.07981), just won the **Runner-up Best Paper award** for the Reliable ML from Unreliable Data workshop at NeurIPS 2025. Thanks and congratulations to all my coauthors!

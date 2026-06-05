@@ -1,0 +1,21 @@
+# Photo gallery (carousel)
+# Each entry becomes a slide in the carousel; click a slide to open the full-size lightbox.
+#
+# Fields:
+#   src     (required) path to the image, e.g. assets/gallery/hiking.jpg
+#   caption (optional) short text shown over the slide and in the lightbox
+#   alt     (optional) accessibility text (defaults to caption / filename)
+#
+# NOTE: The images below are AI-generated placeholders. Replace them with your
+# own photos by dropping files into assets/gallery/ and editing the entries.
+
+- src: assets/gallery/gallery-badminton.png
+  caption: "Badminton — one of my favorite ways to unwind"
+- src: assets/gallery/gallery-swimming.png
+  caption: "Laps at the pool"
+- src: assets/gallery/gallery-campus.png
+  caption: "Campus in the fall"
+- src: assets/gallery/gallery-mountains.png
+  caption: "Sunrise over the mountains"
+- src: assets/gallery/gallery-city.png
+  caption: "City lights by the river"

@@ -1,3 +1,12 @@
+- date: '2026-06'
+  content: >
+    We released [Rethinking the Divergence Regularization in LLM RL](https://arxiv.org/abs/2606.09821).
+    The importance ratio that PPO/GRPO clip on can be a poor proxy for distributional shift, and divergence-based
+    masks like DPPO simply discard a token's gradient once it leaves the trust region. We propose
+    **DRPO (Divergence Regularized Policy Optimization)**, which replaces the hard mask with a smooth
+    advantage-weighted quadratic regularizer on policy shift, yielding bounded, corrective gradients beyond the
+    boundary and more stable, efficient LLM RL training across model scales, architectures, and precision settings.
+
 - date: '2026-01'
   content: >
     We released [Future-KL Regularized GRPO: Process-Level Credit Assignment from f-Divergence Regularization](https://arxiv.org/abs/2601.10201).

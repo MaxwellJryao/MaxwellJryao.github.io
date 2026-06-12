@@ -701,7 +701,7 @@ body.darkmode--activated #publications-container {
 /* Publications */
 /* Publications scrollable container */
 #publications-container {
-    max-height: 600px;
+    max-height: 900px;
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 8px;
@@ -1606,7 +1606,7 @@ body {
     }
 
     #publications-container {
-        max-height: 500px;
+        max-height: 700px;
     }
 
     .news-item {

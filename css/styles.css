@@ -565,39 +565,47 @@ body.darkmode--activated .profile-photo:hover {
 }
 
 /* Scrollbar styling */
-#news-container::-webkit-scrollbar {
+#news-container::-webkit-scrollbar,
+#publications-container::-webkit-scrollbar {
     width: 6px;
 }
 
-#news-container::-webkit-scrollbar-track {
+#news-container::-webkit-scrollbar-track,
+#publications-container::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 3px;
 }
 
-#news-container::-webkit-scrollbar-thumb {
+#news-container::-webkit-scrollbar-thumb,
+#publications-container::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.1);
     border-radius: 3px;
 }
 
-#news-container::-webkit-scrollbar-thumb:hover {
+#news-container::-webkit-scrollbar-thumb:hover,
+#publications-container::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.2);
 }
 
-body.darkmode--activated #news-container::-webkit-scrollbar-thumb {
+body.darkmode--activated #news-container::-webkit-scrollbar-thumb,
+body.darkmode--activated #publications-container::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.1);
 }
 
-body.darkmode--activated #news-container::-webkit-scrollbar-thumb:hover {
+body.darkmode--activated #news-container::-webkit-scrollbar-thumb:hover,
+body.darkmode--activated #publications-container::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.2);
 }
 
 /* Firefox scrollbar */
-#news-container {
+#news-container,
+#publications-container {
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
 }
 
-body.darkmode--activated #news-container {
+body.darkmode--activated #news-container,
+body.darkmode--activated #publications-container {
     scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
@@ -691,6 +699,14 @@ body.darkmode--activated #news-container {
 }
 
 /* Publications */
+/* Publications scrollable container */
+#publications-container {
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8px;
+}
+
 .publication {
     margin-bottom: 32px;
 }
@@ -1587,6 +1603,10 @@ body {
     /* 新闻区域 - 防止溢出 */
     #news-container {
         max-height: 400px;
+    }
+
+    #publications-container {
+        max-height: 500px;
     }
 
     .news-item {
